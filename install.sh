@@ -6,6 +6,6 @@ sudo apt install -y vim zsh i3 i3status i3lock && \
 	mkdir ~/.antigen && \
 	cd ~/.antigen && \
 	curl -L git.io/antigen > antigen.zsh && \
-	mkdir -p ~/.config && \
+	mkdir -p ~/.config/i3 && \
 	cp config ~/.config/i3/
 
