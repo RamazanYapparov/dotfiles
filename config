@@ -172,4 +172,7 @@ bindsym XF86AudioStop exec playerctl stop
 
 ################# DUAL DISPLAY ################
 
-exec xrandr --output HDMI-0 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output VGA-0 --mode 1920x1080 --pos 0x0 --rotate normal
+exec xrandr --output HDMI-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output VGA-1 --mode 1920x1080 --pos 0x0 --rotate normal
+
+################ KEYBOARD LAYOUT #############
+exec --no-startup-id setxkbmap -layout "us,ru" -option "grp:lalt_lshift_toggle,grp_led:scroll"
