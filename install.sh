@@ -8,5 +8,6 @@ sudo apt install -y vim zsh i3 i3status i3lock && \
 	curl -L git.io/antigen > antigen.zsh && \
 	mkdir -p ~/.config/i3 && \
 	cp config ~/.config/i3/ && \
-	find /usr -type d -name 'xorg.conf.d' -exec cp 30-touchpad.conf {} \; -quit
+	mkdir -p /etc/X11/xorg.conf.d/ && \
+	cp 30-touchpad.conf /etc/X11/xorg.conf.d/
 
