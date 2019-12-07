@@ -9,16 +9,3 @@ alias pm="python manage.py"
 
 function dpm { docker exec -it "$1" python manage.py "$2" ; }
 function dive { docker exec -it "$@" /bin/sh ; }
-
-alias thefuck="snap run mati865-thefuck"
-
-fuck () {
-                TF_PREVIOUS=$(fc -ln -1 | tail -n 1);
-                TF_CMD=$(
-                    TF_ALIAS=fuck
-                    TF_SHELL_ALIASES=$(alias)
-                    PYTHONIOENCODING=utf-8
-                    thefuck $TF_PREVIOUS THEFUCK_ARGUMENT_PLACEHOLDER $*
-                ) && eval $TF_CMD;
-                test -n "$TF_CMD" && print -s $TF_CMD
-            }
