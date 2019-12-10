@@ -1,0 +1,13 @@
+[user]
+        name = Ramazan Yapparov
+        email = ramazan.yapparov@gmail.com
+[alias]
+    co = checkout
+    br = branch
+    st = status
+    cm = commit -m
+    mg = merge
+[push]
+	default = simple
+[core]
+	autocrlf = input
