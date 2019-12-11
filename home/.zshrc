@@ -25,5 +25,7 @@ antigen theme bira
 # Tell Antigen that you're done.
 antigen apply
 
+hash thefuck && eval $(thefuck --alias)
+
 source ~/.bash_alias
 
