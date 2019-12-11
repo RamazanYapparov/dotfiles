@@ -27,5 +27,5 @@ antigen apply
 
 hash thefuck && eval $(thefuck --alias)
 
-source ~/.bash_alias
+source ~/.bash_aliases
 
