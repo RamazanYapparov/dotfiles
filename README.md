@@ -27,6 +27,8 @@ I3 mode additionally installs following packages:
 - i3lock
 - dmenu
 - snapd
+- maim
+- xclip
 
 Elementary mode installs `flatpak` package
 > TODO move i3 mode to flatpak
