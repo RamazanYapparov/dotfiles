@@ -198,3 +198,6 @@ bindsym XF86AudioStop exec playerctl stop
 
 ################ KEYBOARD LAYOUT #############
 exec --no-startup-id setxkbmap -layout "us,ru" -option "grp:lalt_lshift_toggle,grp_led:scroll"
+
+################ SCREENSHOT ##################
+bindsym --release $mod+Print exec maim -s | xclip -selection clipboard -t image/png
