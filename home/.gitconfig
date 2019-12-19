@@ -1,6 +1,15 @@
 [user]
         name = Ramazan Yapparov
-        email = ramazan.yapparov@gmail.com
+	email = ramazan.yapparov@gmail.com
+
+# include config file for work repos
+# the .gitconfig file should include name and email configs
+# (or others if needed)
+# can be replaced with git config --local user.email "email@example.com"
+
+
+#[includeIf "gitdir:/s/java/"]
+#	path = /s/java/.gitconfig
 [alias]
 	co = checkout
 	br = branch
@@ -12,7 +21,8 @@
 	default = simple
 [core]
 	autocrlf = input
+	editor = vim
 [http]
-        sslVerify = false
+	sslVerify = false
 [credential]
-        helper = store
+	helper = store
