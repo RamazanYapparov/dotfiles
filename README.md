@@ -29,6 +29,7 @@ I3 mode additionally installs following packages:
 - snapd
 - maim
 - xclip
+- py3status **WARNING: py3status xkb_input module requires xkb-switch-git package from AUR**
 
 Elementary mode installs `flatpak` package
 > TODO move i3 mode to flatpak

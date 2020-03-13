@@ -13,7 +13,8 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+#font pango:monospace 8
+font pango:JetBrains Mono 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -29,8 +30,10 @@ font pango:monospace 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+workspace_layout tabbed
+
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -173,10 +176,33 @@ mode "move" {
 
 bindsym $mod+m mode "move" focus floating
 
+## Manual management of external displays
+# Set the shortcuts and what they do
+set $mode_display Screen config: (s)ingle, (v)ertical
+mode "$mode_display" {
+    bindsym v exec --no-startup-id xrandr --output eDP-1 --primary --mode 1600x900 --pos 0x2160 --output HDMI-1 --mode 3840x2160 --pos 0x0
+    bindsym s exec --no-startup-id xrandr --output eDP-1 --auto --primary --output HDMI-1 --off
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+# Declare here the shortcut to bring the display selection menu
+bindsym $mod+x mode "$mode_display"
+
+for_window [title="Vivaldi"] move container to workspace 1
+for_window [title="Telegram"] move container to workspace 1
+for_window [title="Google Chrome"] move container to workspace 1
+for_window [title="IntelliJ IDEA"] move container to workspace 3
+for_window [title="Skype"] move container to workspace 2
+for_window [title="BackOffice"] move container to workspace 2
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+#        status_command i3status
+	status_command py3status -c ~/.config/i3status/config
+	tray_output eDP-1
 }
 
 ################### AUDIO ######################
@@ -191,13 +217,16 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioStop exec playerctl stop
 
+exec --no-startup-id nm-applet
+
 ################# DUAL DISPLAY ################
 
 # exec xrandr --output HDMI-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output VGA-1 --mode 1920x1080 --pos 0x0 --rotate normal
 # exec xrandr --output eDP-1 --auto --primary --output HDMI-1 --auto --right-of eDP-1
 
 ################ KEYBOARD LAYOUT #############
-exec --no-startup-id setxkbmap -layout "us,ru" -option "grp:lalt_lshift_toggle,grp_led:scroll"
+exec --no-startup-id setxkbmap -layout "us,ru" -option "grp:caps_toggle,grp_led:scroll"
 
 ################ SCREENSHOT ##################
 bindsym --release $mod+Print exec maim -s | xclip -selection clipboard -t image/png
+
