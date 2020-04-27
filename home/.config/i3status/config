@@ -15,15 +15,17 @@ general {
 }
 
 # order += "ipv6"
-order += "cpu_usage"
+# order += "cpu_usage"
 # order += "disk /"
 # order += "disk /home"
 order += "wireless _first_"
-order += "ethernet _first_"
+# order += "ethernet _first_"
 order += "battery all"
 order += "volume master"
 # order += "load"
-order += "memory"
+# order += "memory"
+order += "sysdata cpu"
+order += "sysdata mem"
 order += "xkb_input"
 order += "tztime local"
 
@@ -79,7 +81,17 @@ memory {
         format_degraded = "MEMORY < %available"
 }
 
+sysdata cpu {
+	format = "[\?color=cpu_used_percent CPU: {cpu_used_percent}% Temp: {cpu_temp}°C]"
+}
+
+sysdata mem {
+	format = "[\?color=mem_used_percent Mem: {mem_used}/{mem_total}  {mem_total_unit} ({mem_used_percent}%)]"
+	tresholds = [(0, "good"), (60, "degraded"), (80, "bad")]
+}
+
 xkb_input {
+	switcher = xkb-switch
 }
 
 tztime local {
