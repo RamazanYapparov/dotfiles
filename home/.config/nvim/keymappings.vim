@@ -36,3 +36,6 @@ cmap w!! w !sudo tee % >/dev/null
 nnoremap <C-e> :NERDTreeToggle<CR>
 " command to enter normal mode in embedded terminal
 tnoremap <Esc> <C-\><C-n>
+
+" add closing } on typing for java files only
+au Filetype java inoremap { {<CR>}<Esc>kA<CR>

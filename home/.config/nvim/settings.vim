@@ -13,7 +13,7 @@ set tabstop=2                     " set tabs to width 2
 set expandtab                     " insert spaces, not tabs, when autoindenting
 set smarttab                      " smart tab
 set shiftround                    " use multiple of shiftwidth when indenting with '<' or '>'
-set autoindent                    " use indent from previous line
+set smartindent                   " use indent from previous line
 set copyindent                    " copy the previous indentation
 set ignorecase                    " ignore case when searching
 set smartcase                     " ignore case if search pattern is all lowercase, case-sensitive otherwise
