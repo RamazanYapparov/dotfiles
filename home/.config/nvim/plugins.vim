@@ -44,6 +44,7 @@ let g:codestats_api_key = 'SFMyNTY.Y21GdFlYcGhiaTU1WVhCd1lYSnZkZz09IyNNVEUxTmpZP
 
 Plug 'vim-airline/vim-airline'                            " Vim airline for better status line
 Plug 'vim-airline/vim-airline-themes'                     " Additional themes. Todo: find the BEST one
+let g:airline_theme='raven'
 
 Plug 'Yggdroot/indentLine'                                " Add intentation line indicator
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
