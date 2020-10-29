@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-#font pango:monospace 8
+font pango:monospace 8
 font pango:JetBrains Mono 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -33,13 +33,14 @@ floating_modifier $mod
 workspace_layout tabbed
 
 # start a terminal
-bindsym $mod+Return exec kitty
+#bindsym $mod+Return exec kitty
+bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # lock screen
-bindsym $mod+l exec --no-startup-id ~/bin/lock.sh
+# bindsym $mod+l exec --no-startup-id ~/bin/lock.sh
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
@@ -49,10 +50,10 @@ bindsym $mod+l exec --no-startup-id ~/bin/lock.sh
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-#bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+h focus left
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -61,10 +62,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move left
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -73,7 +74,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+s split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -82,7 +83,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+# bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -187,23 +188,38 @@ mode "$mode_display" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-# Declare here the shortcut to bring the display selection menu
 bindsym $mod+x mode "$mode_display"
 
+#Power management
+set $mode_power (P)ower off, (R)eboot, (S)uspend, (L)ock
+mode "$mode_power" {
+    bindsym p exec --no-startup-id shutdown now
+    bindsym r exec --no-startup-id reboot now
+    bindsym s exec --no-startup-id 'systemctl suspend && ~/bin/lock.sh'
+    bindsym l exec --no-startup-id ~/bin/lock/sh
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# Declare here the shortcut to bring the display selection menu
+bindsym $mod+p mode "$mode_power"
+
 for_window [title="Vivaldi"] move container to workspace 1
-for_window [title="Telegram"] move container to workspace 1
-for_window [title="Google Chrome"] move container to workspace 1
-for_window [title="IntelliJ IDEA"] move container to workspace 3
-for_window [title="Skype"] move container to workspace 2
-for_window [title="BackOffice"] move container to workspace 2
+#for_window [title="Telegram"] move container to workspace 2
+#for_window [title="Google Chrome"] move container to workspace 1
+#for_window [title="Skype"] move container to workspace 2
+#for_window [title="Slack"] move container to workspace 2
+for_window [class="jetbrains"] move container to workspace 3
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
 #        status_command i3status
-	status_command py3status -c ~/.config/i3status/config
+	status_command py3status -c ~/.config/i3status/config -d -l ~/py3status.log
 	tray_output eDP-1
-}
+} 
 
 ################### AUDIO ######################
 
@@ -225,7 +241,8 @@ exec --no-startup-id nm-applet
 # exec xrandr --output eDP-1 --auto --primary --output HDMI-1 --auto --right-of eDP-1
 
 ################ KEYBOARD LAYOUT #############
-exec --no-startup-id setxkbmap -layout "us,ru" -option "grp:caps_toggle,grp_led:scroll"
+# exec --no-startup-id setxkbmap -layout "us,ru" -option "grp:caps_toggle,grp_led:scroll"
+# exec --no-startup-id xmodmap -e "pointer = 1 2 3 4 5 6 7 9 8 10 11 12"
 
 ################ SCREENSHOT ##################
 bindsym --release $mod+Print exec maim -s | xclip -selection clipboard -t image/png

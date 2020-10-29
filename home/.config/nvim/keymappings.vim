@@ -1,9 +1,10 @@
-" change the mapleader from \ to ,
-let mapleader=","
 nnoremap L $
+vnoremap L $
 nnoremap H ^
+vnoremap H ^
 nnoremap ; :
-inoremap jk <Esc>
+inoremap jkl <Esc>
+inoremap jj <Esc>
 nnoremap U <C-r>
 
 
@@ -19,8 +20,6 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 nmap <S-Enter> O<Esc>
 nmap <CR> o<Esc>
 
-imap <C-space> <C-n>
-
 " Copy and paste to system clipboard with leader prefix (,y;,p)
 vnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+yg_
@@ -35,3 +34,5 @@ vnoremap <leader>P "+P
 cmap w!! w !sudo tee % >/dev/null
 
 nnoremap <C-e> :NERDTreeToggle<CR>
+" command to enter normal mode in embedded terminal
+tnoremap <Esc> <C-\><C-n>
