@@ -39,22 +39,12 @@ bindkey -M viins '\e.' insert-last-word # map alt+. to paste last word from prev
 bindkey -M viins 'jj' vi-cmd-mode
 source ~/.autocomplete.zsh
 source ~/.bash_aliases
-source ~/.scalyr
-eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 export EDITOR="$(which nvim)"
 export KUBE_EDITOR="$(which nvim)"
-export CLOUDSDK_PYTHON="python3.6"
 
 
-HEROKU_AC_ZSH_SETUP_PATH=/home/ramazan/.cache/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/ramazan/google-cloud-sdk/path.zsh.inc' ]; then . '/home/ramazan/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/ramazan/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/ramazan/google-cloud-sdk/completion.zsh.inc'; fi
+source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/ramazan/.sdkman"

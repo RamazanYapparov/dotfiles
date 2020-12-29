@@ -5,9 +5,10 @@
 
 # Packages:
 core=(grub efibootmgr networkmanager os-prober base-devel linux-headers pulseaudio alsa-utils pulseaudio-alsa pulseaudio-equalizer pulseaudio-jack xdg-utils xdg-user-dirs sudo)
-utils=(exa unzip docker neovim git rsync zsh wget curl which reflector ack docker-compose)
+utils=(exa unzip docker vim neovim git rsync zsh wget curl which reflector ack docker-compose zip ttf-jetbrains-mono)
 python_packages=(python flake8 python-pip python-pipenv)
-gui_base=(xorg i3-wm i3-lock i3status i3blocks rofi alacritty maim xclip dunst)
+node_packages=(nodejs npm yarn)
+gui_base=(xorg i3-wm i3lock i3status i3blocks rofi alacritty maim xclip dunst)
 gui_apps=(telegram-desktop code firefox zathura)
 
 
@@ -28,7 +29,7 @@ ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime && \
 # installing all needed packages
 # todo: move packages into separate variables
 	pacman -Syyuu && \
-	pacman -S grub ${core[*]} ${utils[*]}which reflector exa xorg i3-wm i3lock i3status i3blocks rofi alacritty firefox  && \
+	pacman -S grub ${core[*]} ${utils[*]} ${python_packages[*]} ${node_packages[*]} ${gui_base[*]} ${gui_apps}
 # for nvidia support install `nvidia` and `nvidia-utils` packages
 # optional to configure reflector later
 # installing bootloader
