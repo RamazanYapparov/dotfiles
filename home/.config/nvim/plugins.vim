@@ -23,6 +23,9 @@ call plug#begin('~/.config/nvim/plugged')
 " todo: add fzf installation script
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
+nnoremap <leader>F :FZF<CR>
+
+Plug 'tpope/vim-repeat'                                   " for repeating plugin commands too (like surround)
 
 " git stuff
 Plug 'tpope/vim-fugitive'                                 " usefull git commands from inside of vim
@@ -50,6 +53,11 @@ Plug 'Yggdroot/indentLine'                                " Add intentation line
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 Plug 'stephpy/vim-yaml'                                   " Faster yaml sytax highlightning
+
+Plug 'mileszs/ack.vim'
+nnoremap <leader>a :Ack!<Space>
+
+Plug 'hashivim/vim-terraform'
 
 call plug#end()
 

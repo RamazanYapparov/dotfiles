@@ -138,10 +138,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -177,34 +177,6 @@ mode "move" {
 
 bindsym $mod+m mode "move" focus floating
 
-## Manual management of external displays
-# Set the shortcuts and what they do
-set $mode_display Screen config: (s)ingle, (v)ertical
-mode "$mode_display" {
-    bindsym v exec --no-startup-id xrandr --output eDP-1 --primary --mode 1600x900 --pos 0x2160 --output HDMI-1 --mode 3840x2160 --pos 0x0
-    bindsym s exec --no-startup-id xrandr --output eDP-1 --auto --primary --output HDMI-1 --off
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+x mode "$mode_display"
-
-#Power management
-set $mode_power (P)ower off, (R)eboot, (S)uspend, (L)ock
-mode "$mode_power" {
-    bindsym p exec --no-startup-id shutdown now
-    bindsym r exec --no-startup-id reboot now
-    bindsym s exec --no-startup-id 'systemctl suspend && ~/bin/lock.sh'
-    bindsym l exec --no-startup-id ~/bin/lock/sh
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-# Declare here the shortcut to bring the display selection menu
-bindsym $mod+p mode "$mode_power"
 
 for_window [title="Vivaldi"] move container to workspace 1
 #for_window [title="Telegram"] move container to workspace 2
@@ -216,17 +188,16 @@ for_window [class="jetbrains"] move container to workspace 3
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-#        status_command i3status
-	status_command py3status -c ~/.config/i3status/config -d -l ~/py3status.log
-	tray_output eDP-1
-} 
+    # status_command py3status -c ~/.config/i3status/config -d -l ~/py3status.log
+    status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
+}
 
 ################### AUDIO ######################
+# change volume or toggle mute
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
 
-
-bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '5%+'"
-bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '5%-'"
-bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
 #https://github.com/acrisci/playerctl/
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
@@ -239,9 +210,12 @@ exec --no-startup-id nm-applet
 
 # exec xrandr --output HDMI-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output VGA-1 --mode 1920x1080 --pos 0x0 --rotate normal
 # exec xrandr --output eDP-1 --auto --primary --output HDMI-1 --auto --right-of eDP-1
+exec xrandr --output HDMI-2 --mode 1920x1080 --pos 0x0
 
 ################ KEYBOARD LAYOUT #############
-# exec --no-startup-id setxkbmap -layout "us,ru" -option "grp:caps_toggle,grp_led:scroll"
+exec --no-startup-id setxkbmap -layout "us,ru" -option && setxkbmap -layout "us,ru" -option "grp:caps_toggle,grp_led:scroll,grp_led:caps"
+# Emit 11 signal so i3blocks signal will update keyboard layout indicator
+bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 # exec --no-startup-id xmodmap -e "pointer = 1 2 3 4 5 6 7 9 8 10 11 12"
 
 ################ SCREENSHOT ##################

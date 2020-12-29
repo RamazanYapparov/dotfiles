@@ -22,7 +22,7 @@ set hlsearch                      " highlight incsearch matches
 set guioptions-=T                 " turn off the never-used toolbar buttons
 " set clipboard=unnamed             " use the OS X clipboard for copy/paste (if no register is specified).  Thus, yy in vim will write to the system clipboard & can be pasted with Cmd-C
 " set wildmode=list:longest         " make tab-completion behave like bash shell
-set autochdir                     " always set vim's pwd to current file dir
+" set autochdir                     " always set vim's pwd to current file dir
 set synmaxcol=250                 " only syntax highlight the first 250 columns; makes a big speed difference for wide files
 set cursorline                    " enable cursorline coloring
 set nowrap                        " don't wrap lines
@@ -46,3 +46,4 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:. " show trailing spaces and tabs ex
 colorscheme apprentice
 " idea like theme
 " colorscheme dracula
+set path+=**

@@ -148,9 +148,10 @@ Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build'
 Plug 'iamcco/coc-angular', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 Plug 'neoclide/coc-css', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 autocmd FileType scss setl iskeyword+=@-@
-Plug 'neoclide/coc-java', { 'do': 'yarn install --frozen-lockfile && yarn build' }
+" Plug 'neoclide/coc-java', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 " Todo: doesn't work out of the box, need to add some post installation script
 Plug 'neoclide/coc-json', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 Plug 'fannheyward/coc-sql', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 Plug 'neoclide/coc-tsserver', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 Plug 'neoclide/coc-yaml', { 'do': 'yarn install --frozen-lockfile && yarn build' }
+Plug 'gera2ld/coc-format-json', { 'do': 'yarn install --frozen-lockfile && yarn build' }

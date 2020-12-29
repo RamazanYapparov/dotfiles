@@ -15,7 +15,7 @@ antigen bundle mvn
 antigen bundle npm
 antigen bundle python
 antigen bundle sudo
-antigen bundle ssh-agent
+# antigen bundle ssh-agent
 antigen bundle yarn
 antigen bundle kubectl
 
@@ -41,8 +41,9 @@ source ~/.autocomplete.zsh
 source ~/.bash_aliases
 source ~/.scalyr
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-export EDITOR="/snap/bin/nvim"
-export KUBE_EDITOR="/snap/bin/nvim"
+export EDITOR="$(which nvim)"
+export KUBE_EDITOR="$(which nvim)"
+export CLOUDSDK_PYTHON="python3.6"
 
 
 HEROKU_AC_ZSH_SETUP_PATH=/home/ramazan/.cache/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
