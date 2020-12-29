@@ -16,16 +16,16 @@ gui_apps=(telegram-desktop code firefox zathura)
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime && \
 	hwclock --systohc && \
 	mv /etc/locale.gen /etc/locale.gen.bak && \
-	echo “en_US.UTF-8 UTF-8” >> /etc/locale.gen && \
-	echo “LANG=en_US.UTF-8” > /etc/locale.conf && \
+	echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen && \
+	echo 'LANG=en_US.UTF-8' > /etc/locale.conf && \
 	locale-gen && \
 	localectl set-locale LANG=en_US.UTF-8 && \
 	timedatectl set-ntp true && \
 # configuring hostname
 	hostnamectl set-hostname arch && \
-	echo “127.0.0.1 localhost.localdomain localhost” >> /etc/hosts && \
-	echo “::1 localhost.localdomain localhost” >> /etc/hosts && \
-	echo “127.0.0.1 arch.localdomain arch” >> /etc/hosts && \
+	echo '127.0.0.1 localhost.localdomain localhost' >> /etc/hosts && \
+	echo '::1 localhost.localdomain localhost' >> /etc/hosts && \
+	echo '127.0.0.1 arch.localdomain arch' >> /etc/hosts && \
 # installing all needed packages
 # todo: move packages into separate variables
 	pacman -Syyuu && \
