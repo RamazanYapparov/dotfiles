@@ -1,10 +1,12 @@
 #!/usr/bin/zsh
 
-cd && git clone https://aur.archlinux.org/yay.git && \
+cd && \
+	xdg-user-dirs-update && \
+	git clone https://aur.archlinux.org/yay.git && \
 	cd yay && \
 	makepkg -si PKGBUILD && \
-	yay -S ly && \
-	systemctl enable ly && \
+	yay -S ly xkb-switch && \
+	sudo systemctl enable ly && \
 	cd && \
 	git clone https://github.com/RamazanYapparov/dotfiles.git && \
 	cd dotfiles && \
