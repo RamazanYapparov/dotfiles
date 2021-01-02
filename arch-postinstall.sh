@@ -5,7 +5,7 @@ cd && \
 	git clone https://aur.archlinux.org/yay.git && \
 	cd yay && \
 	makepkg -si PKGBUILD && \
-	yay -S ly xkb-switch && \
+	yay --noconfirm -S ly xkb-switch && \
 	sudo systemctl enable ly && \
 	cd && \
 	git clone https://github.com/RamazanYapparov/dotfiles.git && \

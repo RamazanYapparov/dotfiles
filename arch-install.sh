@@ -5,11 +5,11 @@
 
 # Packages:
 core=(grub efibootmgr networkmanager os-prober base-devel linux-headers pulseaudio alsa-utils pulseaudio-alsa pulseaudio-equalizer pulseaudio-jack xdg-utils xdg-user-dirs sudo)
-utils=(exa unzip docker vim neovim git rsync zsh wget curl which reflector ack docker-compose zip ttf-jetbrains-mono fzf sysstat)
+utils=(exa unzip docker vim neovim git rsync zsh wget curl which reflector ack docker-compose zip ttf-jetbrains-mono fzf sysstat kubectl htop ranger)
 python_packages=(python flake8 python-pip python-pipenv python-neovim)
 node_packages=(nodejs npm yarn)
 gui_base=(xorg i3-wm i3lock i3status i3blocks rofi alacritty maim xclip dunst)
-gui_apps=(telegram-desktop code firefox zathura)
+gui_apps=(telegram-desktop code firefox zathura baobab vivaldi celluloid deepin-system-monitor)
 
 
 # configuring locale
@@ -28,8 +28,8 @@ ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime && \
 	echo '127.0.0.1 arch.localdomain arch' >> /etc/hosts && \
 # installing all needed packages
 # todo: move packages into separate variables
-	pacman -Syyuu && \
-	pacman -S grub ${core[*]} ${utils[*]} ${python_packages[*]} ${node_packages[*]} ${gui_base[*]} ${gui_apps}
+	pacman --noconfirm -Syyuu && \
+	pacman --noconfirm -S grub ${core[*]} ${utils[*]} ${python_packages[*]} ${node_packages[*]} ${gui_base[*]} ${gui_apps}
 # for nvidia support install `nvidia` and `nvidia-utils` packages
 # optional to configure reflector later
 # installing bootloader
