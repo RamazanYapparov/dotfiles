@@ -16,7 +16,7 @@ antigen bundle npm
 antigen bundle python
 antigen bundle sudo
 # antigen bundle ssh-agent
-antigen bundle yarn
+# antigen bundle yarn
 antigen bundle kubectl
 
 # code stats
