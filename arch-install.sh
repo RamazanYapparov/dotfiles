@@ -5,7 +5,7 @@
 
 # Packages:
 core=(grub efibootmgr networkmanager os-prober base-devel linux-headers pulseaudio alsa-utils pulseaudio-alsa pulseaudio-equalizer pulseaudio-jack xdg-utils xdg-user-dirs sudo)
-utils=(exa unzip docker vim neovim git rsync zsh wget curl which reflector ack docker-compose zip ttf-jetbrains-mono fzf sysstat kubectl htop ranger)
+utils=(exa unzip docker vim neovim git rsync zsh wget curl which reflector ack docker-compose zip ttf-jetbrains-mono fzf sysstat kubectl htop ranger terraform)
 python_packages=(python flake8 python-pip python-pipenv python-neovim)
 node_packages=(nodejs npm yarn)
 gui_base=(xorg i3-wm i3lock i3status i3blocks rofi alacritty maim xclip dunst)
