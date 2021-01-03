@@ -99,29 +99,41 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# define workspaces
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+set $ws10 10
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -178,18 +190,18 @@ mode "move" {
 bindsym $mod+m mode "move" focus floating
 
 
-for_window [title="Vivaldi"] move container to workspace 1
+for_window [title="Vivaldi"] move container to workspace $ws1
 #for_window [title="Telegram"] move container to workspace 2
 #for_window [title="Google Chrome"] move container to workspace 1
 #for_window [title="Skype"] move container to workspace 2
 #for_window [title="Slack"] move container to workspace 2
-for_window [class="jetbrains"] move container to workspace 3
+for_window [class="jetbrains"] move container to workspace $ws3
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
     # status_command py3status -c ~/.config/i3status/config -d -l ~/py3status.log
-    status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
+    status_command SCRIPTS_DIR=~/.config/i3blocks/scripts i3blocks -c ~/.config/i3blocks/i3blocks.conf
 }
 
 ################### AUDIO ######################
@@ -204,13 +216,13 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioStop exec playerctl stop
 
-exec --no-startup-id nm-applet
+# exec --no-startup-id nm-applet
 
 ################# DUAL DISPLAY ################
 
 # exec xrandr --output HDMI-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output VGA-1 --mode 1920x1080 --pos 0x0 --rotate normal
 # exec xrandr --output eDP-1 --auto --primary --output HDMI-1 --auto --right-of eDP-1
-exec xrandr --output HDMI-2 --mode 1920x1080 --pos 0x0
+# exec xrandr --output HDMI-2 --mode 1920x1080 --pos 0x0
 
 ################ KEYBOARD LAYOUT #############
 exec --no-startup-id setxkbmap -layout "us,ru" -option && setxkbmap -layout "us,ru" -option "grp:caps_toggle,grp_led:scroll,grp_led:caps"
@@ -221,3 +233,5 @@ bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 ################ SCREENSHOT ##################
 bindsym --release $mod+Print exec maim -s | xclip -selection clipboard -t image/png
 
+################ SHUTDOWN MENU ###############
+bindsym $mod+x exec ROFI_OPTIONS='-width 11 -hide-scrollbar -bw 2' ~/.config/i3blocks/scripts/shutdown_menu
