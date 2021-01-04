@@ -35,6 +35,7 @@ antigen theme denysdovhan/spaceship-prompt
 antigen apply
 
 spaceship_vi_mode_enable
+SPACESHIP_GCLOUD_SHOW=false
 bindkey -M viins '\e.' insert-last-word # map alt+. to paste last word from previous command
 bindkey -M viins 'jj' vi-cmd-mode
 source ~/.autocomplete.zsh

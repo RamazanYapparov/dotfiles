@@ -40,6 +40,7 @@ ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime && \
 	systemctl enable docker && \
 	useradd -m -g users -G wheel,storage,power,docker,audio -s $(which zsh) ramazan && \
 	visudo && \
+	passwd && \
 	passwd ramazan && \
 
 	echo 'setup is complete, please put your config files in place before rebooting'
