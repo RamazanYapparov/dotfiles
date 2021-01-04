@@ -43,11 +43,18 @@ export EDITOR="$(which nvim)"
 export KUBE_EDITOR="$(which nvim)"
 
 
+# FZF
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+# GCloud
+if [ -f '/home/ramazan/google-cloud-sdk/path.zsh.inc' ]; then . '/home/ramazan/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/home/ramazan/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/ramazan/google-cloud-sdk/completion.zsh.inc'; fi
+
+# SDKMAN
 export SDKMAN_DIR="/home/ramazan/.sdkman"
 [[ -s "/home/ramazan/.sdkman/bin/sdkman-init.sh" ]] && source "/home/ramazan/.sdkman/bin/sdkman-init.sh"
+
+# kubectl
 source <(command kubectl completion zsh)
 

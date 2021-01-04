@@ -9,7 +9,7 @@ utils=(exa unzip docker vim neovim git rsync zsh wget curl which reflector ack d
 python_packages=(python flake8 python-pip python-pipenv python-neovim)
 node_packages=(nodejs npm yarn)
 gui_base=(xorg i3-wm i3lock i3status i3blocks rofi alacritty maim xclip dunst)
-gui_apps=(telegram-desktop code firefox zathura baobab vivaldi celluloid deepin-system-monitor)
+gui_apps=(telegram-desktop code firefox zathura baobab vivaldi celluloid deepin-system-monitor pavucontrol)
 
 
 # configuring locale

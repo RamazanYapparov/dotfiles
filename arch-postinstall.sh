@@ -5,7 +5,8 @@ cd && \
 	git clone https://aur.archlinux.org/yay.git && \
 	cd yay && \
 	makepkg -si PKGBUILD && \
-	yay --noconfirm -S ly xkb-switch dtrx google-chrome intellij-idea-ultimate-edition google-cloud-sdk && \
+	yay --noconfirm -S \
+		ly xkb-switch dtrx google-chrome intellij-idea-ultimate-edition && \
 	sudo systemctl enable ly && \
 	cd && \
 	git clone https://github.com/RamazanYapparov/dotfiles.git && \
