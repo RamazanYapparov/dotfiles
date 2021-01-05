@@ -5,7 +5,7 @@
 
 # Packages:
 core=(grub efibootmgr networkmanager os-prober base-devel linux-headers pulseaudio alsa-utils pulseaudio-alsa pulseaudio-equalizer pulseaudio-jack xdg-utils xdg-user-dirs sudo mtools dosfstools ntfs-3g)
-utils=(exa unzip docker vim neovim git rsync zsh wget curl which reflector ack docker-compose zip ttf-font-awesome ttf-jetbrains-mono fzf sysstat kubectl htop ranger terraform xdotool yad)
+utils=(exa unzip docker vim neovim git rsync zsh wget curl which reflector ack docker-compose zip ttf-font-awesome ttf-jetbrains-mono fzf sysstat kubectl htop ranger terraform xdotool yad pacman-contrib)
 python_packages=(python flake8 python-pip python-pipenv python-neovim)
 node_packages=(nodejs npm yarn)
 gui_base=(xorg i3-wm i3lock i3status i3blocks rofi alacritty maim xclip dunst)
@@ -27,9 +27,8 @@ ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime && \
 	echo '::1 localhost.localdomain localhost' >> /etc/hosts && \
 	echo '127.0.0.1 arch.localdomain arch' >> /etc/hosts && \
 # installing all needed packages
-# todo: move packages into separate variables
 	pacman --noconfirm -Syyuu && \
-	pacman --noconfirm -S grub ${core[*]} ${utils[*]} ${python_packages[*]} ${node_packages[*]} ${gui_base[*]} ${gui_apps}
+	pacman --noconfirm -S ${core[*]} ${utils[*]} ${python_packages[*]} ${node_packages[*]} ${gui_base[*]} ${gui_apps}
 # for nvidia support install `nvidia` and `nvidia-utils` packages
 # optional to configure reflector later
 # installing bootloader
@@ -39,9 +38,11 @@ ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime && \
 	systemctl enable NetworkManager && \
 	systemctl enable docker && \
 	useradd -m -g users -G wheel,storage,power,docker,audio -s $(which zsh) ramazan && \
-	visudo && \
 	passwd && \
 	passwd ramazan && \
+	visudo && \
+	echo 'options hid_apple fnmode=2' > /etc/modprobe.d/hid_apple.conf && \
+	mkinitcpio -P && \
 
 	echo 'setup is complete, please put your config files in place before rebooting'
 
