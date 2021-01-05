@@ -6,7 +6,7 @@ cd && \
 	cd yay && \
 	makepkg -sic --noconfirm PKGBUILD && \
 	yay --noconfirm -S \
-		ly xkb-switch dtrx google-chrome \
+		ly xkb-switch dtrx google-chrome powerline-fonts-git \
 		intellij-idea-ultimate-edition && \
 	sudo systemctl enable ly && \
 	cd && \
@@ -18,6 +18,6 @@ cd && \
 	curl -s "https://get.sdkman.io" | bash && \
 	curl https://sdk.cloud.google.com > install.sh && \
 	bash install.sh --disable-prompts && \
-	git clone https://github.com/powerline/fonts.git powerline-fonts && \
-	sudo chmod +x powerline-fonts/install.sh && \
-	powerline-fonts/install.sh
+	git clone https://github.com/powerline/fonts.git powerline-fonts #&& \
+	#sudo chmod +x powerline-fonts/install.sh && \
+	#powerline-fonts/install.sh
