@@ -17,7 +17,5 @@ cd && \
 	curl -L git.io/antigen > /home/$USER/.antigen/antigen.zsh && \
 	curl -s "https://get.sdkman.io" | bash && \
 	curl https://sdk.cloud.google.com > install.sh && \
-	bash install.sh --disable-prompts && \
-	git clone https://github.com/powerline/fonts.git powerline-fonts #&& \
-	#sudo chmod +x powerline-fonts/install.sh && \
-	#powerline-fonts/install.sh
+	bash install.sh --disable-prompts
+
