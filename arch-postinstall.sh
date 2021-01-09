@@ -10,6 +10,8 @@ cd && \
 		intellij-idea-ultimate-edition && \
 	sudo systemctl enable ly && \
 	cd && \
+	git clone https://github.com/vinceliuice/grub2-themes.git && \
+	sudo grub2-themes/install.sh --vimix --white && \
 	git clone https://github.com/RamazanYapparov/dotfiles.git && \
 	cd dotfiles && \
 	rsync -av home/ /home/$USER/ && \

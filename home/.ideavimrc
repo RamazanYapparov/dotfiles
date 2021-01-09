@@ -1,0 +1,74 @@
+let mapleader=","
+:set surround
+
+nnoremap L $
+vnoremap L $
+nnoremap H ^
+vnoremap H ^
+nnoremap ; :
+inoremap jkl <Esc>
+inoremap jj <Esc>
+nnoremap U <C-r>
+
+
+" ,/ for to remove highlights after serach
+nmap <silent> <leader>/ :nohlsearch<CR>
+" enter in normal mode to create blank line
+nmap <S-Enter> O<Esc>
+nmap <CR> o<Esc>
+
+" Copy and paste to system clipboard with leader prefix (,y;,p)
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+vnoremap <C-c> "+y
+inoremap <C-v> <Esc>"+pa
+
+nnoremap x "_x
+nnoremap d "_d
+nnoremap D "_D
+vnoremap d "_d
+
+nnoremap <leader>d ""d
+nnoremap <leader>D ""D
+vnoremap <leader>d ""d
+
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+set backspace=indent,eol,start
+
+
+nnoremap <leader>e :action SearchEverywhere<CR>
+nnoremap <leader>g :action FindInPath<CR>
+nnoremap <leader>s :action FileStructurePopup<CR>
+
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gs :action GotoSuperMethod<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gb :action JumpToLastChange<CR>
+
+nnoremap U :action FindUsages<CR>
+nnoremap R :action RenameElement<CR>
+
+nnoremap == :action ReformatCode<CR>
+vnoremap == :action ReformatCode<CR>
+
+nnoremap gc :action CommentByLineComment<CR>
+
+nnoremap <C-CR> :action ShowIntentionActions<CR>
+
+nnoremap <leader>a :action GotoAction<CR>
+vnoremap <leader>a :action GotoAction<CR>
+
+nnoremap <C-j> :action NextTab<CR>
+nnoremap <C-k> :action PreviousTab<CR>
+
+nnoremap <leader>k :action ChangesView.ToggleCommitUi<CR>
+
