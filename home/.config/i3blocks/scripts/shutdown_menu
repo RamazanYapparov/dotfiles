@@ -28,6 +28,7 @@
 
 # Use a custom lock script
 #LOCKSCRIPT="i3lock-extra -m pixelize"
+# set -x
 
 # Colors: FG (foreground), BG (background), HL (highlighted)
 FG_COLOR="${FG_COLOR:-#bbbbbb}"
@@ -116,10 +117,10 @@ typeset -A menu
 menu=(
   [Shutdown]="systemctl poweroff"
   [Reboot]="systemctl reboot"
-  [Hibernate]="systemctl hibernate"
+  # [Hibernate]="systemctl hibernate"
   [Suspend]="systemctl suspend"
-  [Halt]="systemctl halt"
-  [Lock]="${LOCKSCRIPT:-i3lock --color=${BG_COLOR#"#"}}"
+  # [Halt]="systemctl halt"
+  # [Lock]="${LOCKSCRIPT:-i3lock --color=${BG_COLOR#"#"}}"
   [Logout]="i3-msg exit"
   [Cancel]=""
 )
