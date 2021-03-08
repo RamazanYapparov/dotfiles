@@ -7,7 +7,7 @@ cd && \
 	makepkg -sic --noconfirm PKGBUILD && \
 	yay --noconfirm -S \
 		ly xkb-switch dtrx google-chrome powerline-fonts-git \
-		intellij-idea-ultimate-edition && \
+		intellij-idea-ultimate-edition-jre && \
 	sudo systemctl enable ly && \
 	cd && \
 	git clone https://github.com/vinceliuice/grub2-themes.git && \
