@@ -41,8 +41,5 @@ ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime && \
 	passwd && \
 	passwd ramazan && \
 	visudo && \
-	echo 'options hid_apple fnmode=2' > /etc/modprobe.d/hid_apple.conf && \
-	mkinitcpio -P && \
-
 	echo 'setup is complete, please put your config files in place before rebooting'
 
