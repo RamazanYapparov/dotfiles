@@ -6,8 +6,10 @@ set multiple-cursors
 
 nnoremap L $
 vnoremap L $
+onoremap L $
 nnoremap H ^
 vnoremap H ^
+onoremap H ^
 nnoremap ; :
 inoremap jkl <Esc>
 inoremap jj <Esc>
@@ -41,6 +43,9 @@ nnoremap <leader>d ""d
 nnoremap <leader>D ""D
 vnoremap <leader>d ""d
 
+vnoremap <leader>p "_d"+P
+vnoremap p "_dP
+
 set ignorecase
 set smartcase
 set incsearch
@@ -54,8 +59,10 @@ nnoremap <leader>s :action FileStructurePopup<CR>
 nnoremap <leader>n :action GotoClass<CR>
 nnoremap <leader>g :action Generate<CR>
 nnoremap <leader>a :action GotoAction<CR>
-nnoremap <C-o> :action Back<CR>
-nnoremap <C-O> :action Forward<CR>
+nnoremap <leader>b :action Back<CR>
+nnoremap <leader>B :action Forward<CR>
+
+nnoremap <leader>i :action ImplementMethods<CR>
 
 
 nnoremap gd :action GotoDeclaration<CR>
@@ -69,9 +76,10 @@ nnoremap <leader>rn :action RenameElement<CR>
 
 nnoremap == :action ReformatCode<CR>
 vnoremap == :action ReformatCode<CR>
-nnoremap <leader>o :action OptimizeImports<CR>
+nnoremap <leader>O :action OptimizeImports<CR>
+nnoremap <leader>o :action OverrideMethods<CR>
 
-" nnoremap <C-CR> :action ShowIntentionActions<CR>
+nnoremap <D-CR> :action ShowIntentionActions<CR>
 
 nnoremap <C-j> :action NextTab<CR>
 nnoremap <C-k> :action PreviousTab<CR>

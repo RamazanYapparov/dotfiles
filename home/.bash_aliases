@@ -20,6 +20,7 @@ alias d="docker"
 alias dc="docker-compose"
 alias drmi="docker rmi"
 alias drm="docker rm"
+alias drma='docker rm $(docker ps -aq)'
 alias dps="docker ps -a"
 alias di="docker images"
 function dpm { docker exec -it "$1" python manage.py "$2" ; }
@@ -52,7 +53,9 @@ alias p="python"
 # git
 alias g='git'
 balias gpull='git pull origin $(git_current_branch)'
-alias gupd='git pull $(git_remote_to_fetch) master'
+alias gupdm='git pull $(git_remote_to_fetch) master --no-rebase'
+alias gupdr='git pull $(git_remote_to_fetch) master --rebase'
+alias gupdf='git pull $(git_remote_to_fetch) master --ff-only'
 function git_remote_to_fetch {
   if [ $(git config remote.upstream.url | wc -l) = '1' ];  then
     echo 'upstream';
@@ -71,5 +74,7 @@ ialias mvn='mvn'
 alias gr='gradle'
 alias grw='./gradlew'
 alias mci='mvn clean install'
-alias mciT='mvn clean install -DskipTests'
+alias mcp='mvn clean package'
+alias mp='mvn package'
+alias mciT="mvn clean install -DskipTests"
 
