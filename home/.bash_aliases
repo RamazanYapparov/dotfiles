@@ -8,8 +8,7 @@ alias xrfhd='xrandr --output HDMI-2 --mode 1920x1080 --pos 0x0'
 alias sxkbm='setxkbmap -layout "us,ru" -option "grp:caps_switch,grp_led:scroll"'
 alias sxkbmr='setxkbmap -layout "us,ru" -option'
 alias z='zathura'
-alias apt='sudo apt'
-alias apti='sudo apt install -y'
+alias supd='sudo pacman -Syu && yay -Syu'
 alias sa='source ~/.bash_aliases'
 
 # heroku
