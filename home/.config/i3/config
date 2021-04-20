@@ -36,10 +36,6 @@ workspace_layout tabbed
 #bindsym $mod+Return exec kitty
 bindsym $mod+Return exec i3-sensible-terminal
 
-# start applications
-bindsym $mod+Control+1 exec vivaldi-stable
-bindsym $mod+Control+2 exec telegram-desktop
-bindsym $mod+Control+3 exec JAVA_HOME=/home/ramazan/.sdkman/candidates/java/current intellij-idea-ultimate-edition
 
 
 # kill focused window
@@ -106,6 +102,7 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # define workspaces
+# set $ws1 1: 
 set $ws1 1: 
 set $ws2 2: 
 set $ws3 3: 
@@ -200,7 +197,7 @@ for_window [class="Vivaldi-stable"] move container to workspace $ws1
 for_window [class="TelegramDesktop"] move container to workspace $ws2
 for_window [class="Google-chrome"] move container to workspace $ws2
 #for_window [title="Skype"] move container to workspace 2
-#for_window [title="Slack"] move container to workspace 2
+for_window [class="slack"] move container to workspace 2
 for_window [class="jetbrains"] move container to workspace $ws3
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -229,6 +226,7 @@ bindsym XF86AudioStop exec playerctl stop
 # exec xrandr --output HDMI-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output VGA-1 --mode 1920x1080 --pos 0x0 --rotate normal
 # exec xrandr --output eDP-1 --auto --primary --output HDMI-1 --auto --right-of eDP-1
 # exec xrandr --output HDMI-2 --mode 1920x1080 --pos 0x0
+exec xrandr --output HDMI-1 --off
 
 ################ KEYBOARD LAYOUT #############
 exec_always --no-startup-id setxkbmap -layout "us,ru" -option && setxkbmap -layout "us,ru" -option "grp:caps_toggle,grp_led:scroll,grp_led:caps"
@@ -238,6 +236,21 @@ bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 
 ################ SCREENSHOT ##################
 bindsym --release $mod+Print exec maim -s | xclip -selection clipboard -t image/png
+bindsym --release Print exec maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 
 ################ SHUTDOWN MENU ###############
 bindsym $mod+x exec ROFI_OPTIONS='-width 11 -hide-scrollbar -bw 2 -theme Arc-Dark' ~/.config/i3blocks/scripts/shutdown_menu
+
+
+# autostart applications
+# bindsym $mod+Control+1
+exec vivaldi-stable
+# bindsym $mod+Control+2
+exec telegram-desktop
+# bindsym $mod+Control+2
+exec slack
+bindsym $mod+Control+3 exec JAVA_HOME=/home/ramazan/.sdkman/candidates/java/15.0.2.hs-adpt /opt/ideaIU-2020.3.2/idea-IU-203.7148.57/bin/idea.sh
+
+exec JAVA_HOME=/home/ramazan/.sdkman/candidates/java/15.0.2.hs-adpt /opt/ideaIU-2020.3.2/idea-IU-203.7148.57/bin/idea.sh
+
+
