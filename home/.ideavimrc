@@ -15,6 +15,15 @@ inoremap jkl <Esc>
 inoremap jj <Esc>
 nnoremap U <C-r>
 
+" Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
+nmap <C-n> <Plug>NextWholeOccurrence
+xmap <C-n> <Plug>NextWholeOccurrence
+nmap g<C-n> <Plug>NextOccurrence
+xmap g<C-n> <Plug>NextOccurrence
+nmap <C-x> <Plug>SkipOccurrence
+xmap <C-x> <Plug>SkipOccurrence
+nmap <C-p> <Plug>RemoveOccurrence
+xmap <C-p> <Plug>RemoveOccurrence
 
 " ,/ for to remove highlights after serach
 nmap <silent> <leader>/ :nohlsearch<CR>
@@ -38,6 +47,9 @@ nnoremap x "_x
 nnoremap d "_d
 nnoremap D "_D
 vnoremap d "_d
+nnoremap c "_c
+nnoremap C "_C
+vnoremap c "_c
 
 nnoremap <leader>d ""d
 nnoremap <leader>D ""D
@@ -86,4 +98,5 @@ nnoremap <C-k> :action PreviousTab<CR>
 
 nnoremap <leader>k :action ChangesView.ToggleCommitUi<CR>
 nnoremap <leader>x :action CloseContent<CR>
+nnoremap <C-P> :action ParameterInfo<CR>
 
