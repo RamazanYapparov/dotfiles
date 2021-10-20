@@ -33,6 +33,7 @@ ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime && \
 # optional to configure reflector later
 # installing bootloader
 	grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB && \
+	echo 'GRUB_DISABLE_OS_PROBER=false' >> /etc/default/grub && \
 	grub-mkconfig -o /boot/grub/grub.cfg && \
 # enabling services
 	systemctl enable NetworkManager && \
