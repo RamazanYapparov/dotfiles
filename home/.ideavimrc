@@ -3,6 +3,8 @@ let mapleader=","
 set ideajoin
 set commentary
 set multiple-cursors
+set NERDTree
+map <C-e>   :NERDTreeToggle<CR>
 
 nnoremap L $
 vnoremap L $
@@ -65,38 +67,38 @@ set hlsearch
 set backspace=indent,eol,start
 
 
-nnoremap <leader>e :action SearchEverywhere<CR>
-nnoremap <leader>f :action FindInPath<CR>
-nnoremap <leader>s :action FileStructurePopup<CR>
-nnoremap <leader>n :action GotoClass<CR>
-nnoremap <leader>g :action Generate<CR>
-nnoremap <leader>a :action GotoAction<CR>
-nnoremap <leader>b :action Back<CR>
-nnoremap <leader>B :action Forward<CR>
+nnoremap s ys
+nmap <leader>e <Action>(SearchEverywhere)
+nmap <leader>f <Action>(FindInPath)
+nmap <leader>s <Action>(FileStructurePopup)
+nmap <leader>n <Action>(GotoClass)
+nmap <leader>g <Action>(Generate)
+nmap <leader>a <Action>(GotoAction)
 
-nnoremap <leader>i :action ImplementMethods<CR>
+nmap <leader>i <Action>(ImplementMethods)
 
 
-nnoremap gd :action GotoDeclaration<CR>
-nnoremap gs :action GotoSuperMethod<CR>
-nnoremap gi :action GotoImplementation<CR>
-nnoremap gb :action JumpToLastChange<CR>
+nmap gd <Action>(GotoDeclaration)
+nmap gs <Action>(GotoSuperMethod)
+nmap gi <Action>(GotoImplementation)
+nmap gb <Action>(JumpToLastChange)
 
 " nnoremap U :action FindUsages<CR>
-nnoremap <leader>r :action EditorPopupMenu.Run<CR>
-nnoremap <leader>rn :action RenameElement<CR>
+nmap <leader>r <Action>(EditorPopupMenu.Run)
+nmap <leader>rn <Action>(RenameElement)
 
-nnoremap == :action ReformatCode<CR>
-vnoremap == :action ReformatCode<CR>
-nnoremap <leader>O :action OptimizeImports<CR>
-nnoremap <leader>o :action OverrideMethods<CR>
+nmap == <Action>(ReformatCode)
+vmap == <Action>(ReformatCode)
+nmap <leader>O <Action>(OptimizeImports)
+nmap <leader>o <Action>(OverrideMethods)
 
-nnoremap <D-CR> :action ShowIntentionActions<CR>
+nmap <D-CR> <Action>(ShowIntentionActions)
 
-nnoremap <C-j> :action NextTab<CR>
-nnoremap <C-k> :action PreviousTab<CR>
+nmap <C-j> <Action>(NextTab)
+nmap <C-k> <Action>(PreviousTab)
 
-nnoremap <leader>k :action ChangesView.ToggleCommitUi<CR>
-nnoremap <leader>x :action CloseContent<CR>
-nnoremap <C-P> :action ParameterInfo<CR>
+nmap <leader>k <Action>(ChangesView.ToggleCommitUi)
+nmap <leader>x <Action>(CloseContent)
+nmap <C-P> <Action>(ParameterInfo)
 
+nmap <leader>t <Action>(ActivateTerminalToolWindow)

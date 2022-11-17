@@ -1,6 +1,6 @@
 [user]
         name = Ramazan Yapparov
-	email = ramazan.yapparov@gmail.com
+	email = ryapparov@provectus.com
 
 # include config file for work repos
 # the .gitconfig file should include name and email configs
@@ -21,8 +21,10 @@
 	default = simple
 [core]
 	autocrlf = input
-	editor = vim
+	editor = nvim
 [http]
 	sslVerify = false
 [credential]
 	helper = store
+[init]
+	defaultBranch = main
