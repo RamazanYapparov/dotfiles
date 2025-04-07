@@ -1,18 +1,35 @@
 # general
 alias агсл='fuck'
 alias cl="clear"
-ialias ls='exa -al'
+ialias ls='eza -al'
 alias v='nvim'
 alias nv='nvim'
 ialias history='history -i'
 alias xrfhd='xrandr --output HDMI-2 --mode 1920x1080 --pos 0x0'
 alias sxkbm='setxkbmap -layout "us,ru" -option "grp:caps_switch,grp_led:scroll"'
 alias sxkbmr='setxkbmap -layout "us,ru" -option'
-alias z='zathura'
+# alias z='zathura'
 alias supd='sudo pacman -Syu && yay -Syu'
 alias sp='sudo pacman'
 alias sa='source ~/.bash_aliases'
 alias rf='rm -rf'
+alias done='terminal-notifier -message done'
+alias failed='terminal-notifier -message failed'
+
+
+run_with_notification() {
+    local cmd="$1"
+    eval "$cmd"
+    local local_status=$?
+
+    if [ $local_status -eq 0 ]; then
+      done
+    else
+      failed
+    fi
+
+    return $local_status
+}
 
 alias vpnon='systemctl start lhvpn'
 alias vpnoff='systemctl stop lhvpn'
@@ -24,7 +41,7 @@ alias h='heroku'
 
 # docker
 alias d='docker'
-alias dc='docker-compose'
+alias dc='docker compose'
 alias drmi='docker rmi'
 alias drmid='docker rmi $(docker images -f dangling=true -q)'
 alias drm='docker rm'
@@ -48,7 +65,7 @@ alias pdrmi='podman rmi'
 alias gc='gcloud'
 
 # kubernetes
-alias k='kubectl'
+alias k='k9s'
 alias kaf='kubectl apply --record -f'
 alias kg='kubectl get'
 alias kdap='kubectl delete pods --all'
@@ -72,10 +89,10 @@ alias lg='lazygit'
 alias g='git'
 alias gpull='git pull origin $(git_current_branch)'
 alias gpullf='git pull origin $(git_current_branch) --ff-only'
-alias gupdm='git fetch && git pull $(git_remote_to_fetch) $(git_branch_to_fetch) --no-rebase'
+alias gupdm='git fetch && git pull $(git_remote_to_fetch) $(git_branch_to_fetch) --no-rebase --no-edit'
 alias gupdr='git fetch && git pull $(git_remote_to_fetch) $(git_branch_to_fetch) --rebase'
 alias gupdf='git fetch && git pull $(git_remote_to_fetch) $(git_branch_to_fetch) --ff-only'
-alias gpush='git fetch && git push origin $(git_current_branch)'
+alias gpush='git fetch && git push origin $(git_current_branch) ; done'
 alias gpushf='git push origin $(git_current_branch) --force-with-lease'
 alias grh='git reset --hard'
 alias gco='git checkout'
@@ -84,6 +101,8 @@ alias gs='git stash'
 alias gra='git rebase --abort'
 alias grc='git rebase --continue'
 alias gcm='git commit -m'
+alias gcmd='git commit -m "$(git_current_branch)"'
+alias gcn='git commit --no-edit'
 alias grho='git reset --hard origin/$(git_current_branch)'
 
 function git_branch_to_fetch {
@@ -106,6 +125,11 @@ function git_remote_to_fetch {
 ialias mvn='mvn'
 alias gr='gradle'
 alias grw='./gradlew'
+alias grwc='run_with_notification "./gradlew compileKotlin compileTestKotlin compileTestIntegrationKotlin"'
+alias grwb='run_with_notification "./gradlew build"'
+alias grwp='run_with_notification "./gradlew publishToMavenLocal"'
+alias grwbt='run_with_notification "./gradlew build test"'
+alias grwbtt='run_with_notification "./gradlew build test testIntegration"'
 alias mci='mvn clean install'
 alias mciT="mvn clean install -DskipTests"
 alias mcp='mvn clean package'
@@ -129,7 +153,6 @@ alias ys='yarn start'
 # rust
 alias c='cargo'
 
-export DUMP_FILE="/Users/ryapparov/Documents/backups/dev_aws-2022_06_29_11_09_56-dump.sql"
-export COMPOSE_DIR="/Users/ryapparov/src/provectus/lanehealth/lane-health-be/docker"
-alias ddev='docker-compose -f $COMPOSE_DIR/lane-health-dev.yaml down --remove-orphans && docker-compose -f $COMPOSE_DIR/lane-health-dev.yaml up -d && sleep 5 && cat $DUMP_FILE | docker exec -i postgres psql -d lanehealth -h localhost -p 5432 -U postgres'
-alias dall='docker-compose -f $COMPOSE_DIR/lane-health.yaml down && docker-compose -f $COMPOSE_DIR/lane-health.yaml up -d && sleep 5 && cat $DUMP_FILE | docker exec -i docker-hsa-database-1 psql -d lanehealth -h localhost -p 5432 -U postgres'
+JAVA_FOR_KTLINT='11.0.21-amzn'
+JAVA_DEFAULT='17.0.9-amzn'
+alias ktfmt='sdk u java $JAVA_FOR_KTLINT && git diff --name-only --cached --relative | grep "\.kt[s\"]\?$" | xargs ktlint -F --disabled_rules=no-wildcard-imports,import-ordering --relative . && sdk u java $JAVA_DEFAULT'

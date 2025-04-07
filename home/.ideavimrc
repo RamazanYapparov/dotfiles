@@ -14,6 +14,7 @@ vnoremap H ^
 onoremap H ^
 nnoremap ; :
 inoremap jkl <Esc>
+inoremap jk <Esc>
 inoremap jj <Esc>
 nnoremap U <C-r>
 
@@ -102,3 +103,20 @@ nmap <leader>x <Action>(CloseContent)
 nmap <C-P> <Action>(ParameterInfo)
 
 nmap <leader>t <Action>(ActivateTerminalToolWindow)
+
+" NEW STUFF HERE
+" --------------------------------------------------------------------
+
+map <leader>rd <Action>(Debug)
+map <leader>rc <Action>(Stop)
+map <leader>z <Action>(ToggleDistractionFreeMode)
+map <leader>s <Action>(SelectInProjectView)
+map <leader>a <Action>(Annotate)
+map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+map <S-Space> <Action>(GotoNextError)
+
+" Reformat the current line only
+map <leader>l V<Action>(ReformatCode)
+
+map <leader>b <Action>(ToggleLineBreakpoint)
+map <leader>o <Action>(FileStructurePopup)
